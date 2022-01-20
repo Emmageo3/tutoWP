@@ -1,0 +1,66 @@
+/* Contact Form 7 */
+span.wpcf7-not-valid-tip {
+	position: absolute;
+	top: 0;
+	left: 5px;
+	height: auto;
+	background: #fff;
+	font-size: $small-fontsize;
+	color: $red;
+}
+
+div.wpcf7-response-output {
+	font-size: $small-fontsize;
+	padding: $padding-small;
+	margin: 0;
+	@include border-radius(2px);
+}
+
+div.wpcf7-spam-blocked, div.wpcf7-validation-errors {
+	border-color: $red;
+	color: $red;
+
+}
+
+div.wpcf7-mail-sent-ok {
+	border-color: $green;
+	color: $green;
+}
+
+/* Elementor */
+
+// Default line-height fix.
+// We declare headlines specifically to be able to override Elementors default line-height value (.elementor-heading-title {line-height:1})
+// Going only for .elementor-heading-title wouldn't work because Elementor styles are loaded after theme styles.
+// The Premium Add-On will override these again respectively if configured.
+// With that implementation, theme styles will have priority over Elementors global styles.
+// This could be changed if we load the CSS dynamically after Elementors default styles.
+// The benefit: cleaner CSS.
+// The downside: would result in inline CSS and is overall more complex.
+h1.elementor-heading-title, h2.elementor-heading-title, h3.elementor-heading-title, h4.elementor-heading-title, h5.elementor-heading-title, h6.elementor-heading-title {
+	line-height: 1.2;
+}
+
+// Paragraph spacing fix.
+// We don't currently apply this as it will for sure break backwards compatibility or layouts for users that used the negative margin fix.
+// .elementor-text-editor p {
+// 	margin-bottom: 0;
+// }
+
+// Transparent header preview.
+.elementor-editor-active {
+	.wpbf-navigation-transparent {
+		display: none !important;
+	}
+}
+
+// Select arrow indicator fix.
+.elementor-field-group .elementor-select-wrapper select {
+	background-image: none;
+}
+
+/* Yoast */
+#breadcrumbs {
+	font-size: $small-fontsize;
+	margin-bottom: $margin-small;
+}

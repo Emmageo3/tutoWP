@@ -1,0 +1,761 @@
+/* CSS Variables */
+:root {
+	// Colors
+	--base-color: #{$base-color-val};
+	--base-color-alt: #{$base-color-alt-val};
+
+	--brand-color: #{$brand-color-val};
+	--brand-color-alt: #{$brand-color-alt-val};
+
+	--accent-color: #{$accent-color-val};
+	--accent-color-alt: #{$accent-color-alt-val};
+
+	// Margins
+	// --margin: 20px;
+	// --margin-xlarge: 120px;
+	// --margin-large: 80px;
+	// --margin-medium: 40px;
+	// --margin-small: 10px;
+	// --paragraph: 20px;
+
+	// // Paddings
+	// --padding: var(--margin);
+	// --padding-xlarge: var(--margin-xlarge);
+	// --padding-large: var(--margin-large);
+	// --padding-medium: var(--margin-medium);
+	// --padding-small: var(--margin-small);
+}
+
+// Animation keyframes
+@-webkit-keyframes loadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes loadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+/* SVG */
+.wpbf-icon {
+	svg {
+		position: relative;
+		top: .2em;
+		fill: currentColor;
+		height: 1em;
+		width: 1em;
+	}
+}
+
+/* Container */
+.wpbf-container {
+	max-width: $large-screen-breakpoint;
+	padding: 0 $padding;
+}
+
+// Container modifier (center)
+.wpbf-container-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+.wpbf-container:before,
+.wpbf-container:after {
+	content: "";
+	display: table;
+}
+
+.wpbf-container:after {
+	clear: both;
+}
+
+.wpbf-clearfix:before {
+	content: "";
+	display: table-cell;
+}
+
+.wpbf-clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Floats */
+.wpbf-float-left {
+	float: left;
+}
+
+.wpbf-float-right {
+	float: right;
+}
+
+[class*='wpbf-float-'] {
+	max-width: 100%;
+}
+
+/* Buttons */
+.wpbf-button, input[type="submit"] {
+	position: relative;
+	-webkit-appearance: none;
+	text-align: center;
+	padding: 14px 16px;
+	background: $base-color;
+	color: $brand-color-alt;
+	outline: 0;
+	border: none;
+	display: inline-block; // For fallback.
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	@include transition(all 0.2s);
+	line-height: 1;
+	font-weight: 700;
+}
+
+.wpbf-button:hover, input[type="submit"]:hover {
+	background: $base-color;
+	color: $brand-color-alt;
+}
+
+// Button modifier (primary)
+.wpbf-button-primary {
+	background: $accent-color;
+	color: #fff;
+}
+
+.wpbf-button-primary:hover {
+	background: $accent-color-alt;
+	color: #fff;
+}
+
+// Button modifier (size)
+.wpbf-button-small {
+	padding: 10px 12px;
+}
+
+.wpbf-button-large {
+	padding: 18px 20px;
+}
+
+.wpbf-button-full {
+	display: block; // For fallback.
+	display: flex;
+	width: 100%;
+}
+
+.wpbf-button.is-loading {
+	color: transparent !important;
+	pointer-events: none;
+}
+
+.wpbf-button.is-loading::after {
+	content: "";
+	position: absolute;
+	width: 1em;
+	display: block;
+	height: 1em;
+	border: 2px solid #dbdbdb;
+	/* border: 2px solid $accent-color; */
+	border-color: transparent transparent #fff #fff !important;
+	/* border-color: transparent transparent $accent-color $accent-color !important; */
+	border-radius: 290486px;
+	-webkit-animation: loadingSpinAround 0.5s infinite linear;
+	animation: loadingSpinAround 0.5s infinite linear;
+}
+
+/* Form */
+input[type="checkbox"],
+input[type="radio"] {
+	cursor: pointer;
+}
+
+textarea,
+select,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="number"],
+input[type="datetime"] {
+	-webkit-appearance: none;
+	width: 100%;
+	background: #fff;
+	border: 1px solid $base-color;
+	padding: 13px 15px;
+	outline: none;
+	line-height: 1;
+}
+
+// Placeholder
+form :-ms-input-placeholder {color: $brand-color; opacity: .5;}
+form ::-ms-input-placeholder {color: $brand-color; opacity: .5;}
+form ::placeholder {color: $brand-color; opacity: .5;}
+form [placeholder]:focus:-ms-input-placeholder {color: $brand-color; opacity: .7;}
+form [placeholder]:focus::-ms-input-placeholder {color: $brand-color; opacity: .7;}
+form [placeholder]:focus::placeholder {color: $brand-color; opacity: .7;}
+
+// Select
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+select:-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 #000;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+select {
+	background-image: url(img/arrow-down.png);
+	background-position: right 20px center;
+	background-repeat: no-repeat;
+	background-size: 10px auto;
+}
+
+/* Notices */
+.wpbf-notice {
+	background: $base-color-alt;
+	border: 2px solid $base-color;
+	padding: 5px $padding-small;
+	border-radius: 4px;
+	margin-bottom: $margin;
+	font-weight: 700;
+}
+
+// Notice modifier (warning)
+.wpbf-notice-warning {
+	background: rgba($yellow,.1);
+	border-color: $yellow;
+	color: $yellow;
+}
+
+// Notice modifier (error)
+.wpbf-notice-error {
+	background: rgba($red,.1);
+	border-color: $red;
+	color: $red;
+}
+
+// Notice modifier (success)
+.wpbf-notice-success {
+	background: rgba($green,.1);
+	border-color: $green;
+	color: $green;
+}
+
+// Notice modifier (primary)
+.wpbf-notice-primary {
+	background: rgba($blue,.1);
+	border-color: $blue;
+	color: $blue;
+}
+
+/* Table */
+table,
+.wpbf-table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid $base-color;
+	margin-bottom: $margin;
+}
+
+table th,
+table td,
+.wpbf-table th,
+.wpbf-table td {
+	padding: 8px;
+	border: 1px solid $base-color;
+}
+
+// Alignments
+table th,
+.wpbf-table th {
+	text-align: left;
+	background: $base-color-alt;
+}
+
+table thead th,
+.wpbf-table thead th {
+	vertical-align: bottom;
+}
+
+// Table modifier (striped)
+.wpbf-table-striped tr:nth-of-type(odd) {
+	background: $base-color-alt;
+}
+
+// Table modifier (small)
+.wpbf-table-small th,
+.wpbf-table-small td {
+	padding: 4px 8px;
+}
+
+// Table modifier (large)
+.wpbf-table-large th,
+.wpbf-table-large td {
+	padding: 15px;
+}
+
+// Table modifier (hover)
+.wpbf-table-hover tbody tr {
+	@include transition(background-color 0.2s);
+}
+
+.wpbf-table-hover tbody tr:hover {
+	background: $base-color-alt;
+}
+
+/* Grid */
+
+// Basic gutter
+.wpbf-grid {
+	margin-left: (-$grid);
+	@include flex();
+	flex-wrap: wrap;
+}
+.wpbf-grid > * {
+	width: 100%;
+	padding-left: $grid;
+}
+
+.wpbf-grid > .wpbf-grid {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.wpbf-grid + .wpbf-grid {
+	margin-top: $grid;
+}
+
+// xLarge gutter
+.wpbf-grid-xlarge {
+	margin-left: (-$grid-xlarge);
+}
+.wpbf-grid-xlarge > * {
+	padding-left: $grid-xlarge;
+}
+
+.wpbf-grid-xlarge + .wpbf-grid-xlarge {
+	margin-top: $grid-xlarge;
+}
+
+// Large gutter
+.wpbf-grid-large {
+	margin-left: (-$grid-large);
+}
+.wpbf-grid-large > * {
+	padding-left: $grid-large;
+}
+
+.wpbf-grid-large + .wpbf-grid-large {
+	margin-top: $grid-large;
+}
+
+// Medium gutter
+.wpbf-grid-medium {
+	margin-left: (-$grid-medium);
+}
+.wpbf-grid-medium > * {
+	padding-left: $grid-medium;
+}
+
+.wpbf-grid-medium + .wpbf-grid-medium {
+	margin-top: $grid-medium;
+}
+
+// Small gutter
+.wpbf-grid-small {
+	margin-left: (-$grid-small);
+}
+.wpbf-grid-small > * {
+	padding-left: $grid-small;
+}
+
+.wpbf-grid-small + .wpbf-grid-small {
+	margin-top: $grid-small;
+}
+
+// Collapse gutter
+.wpbf-grid-collapse {
+	margin-left: 0;
+}
+.wpbf-grid-collapse > * {
+	padding-left: 0;
+}
+
+.wpbf-grid-collapse + .wpbf-grid-collapse,
+.wpbf-grid-collapse > * {
+	margin-top: 0;
+}
+
+// Divider gutter
+.wpbf-grid-divider:not(:empty) {
+	margin-left: -$divider;
+	margin-right: -$divider;
+}
+
+.wpbf-grid-divider > * {
+	padding-left: $divider;
+	padding-right: $divider;
+}
+
+.wpbf-grid-divider > [class*='wpbf-1-']:not(.wpbf-1-1):nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-2-']:nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-3-']:nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-4-']:nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-5-']:nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-6-']:nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-7-']:nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-8-']:nth-child(n+2),
+.wpbf-grid-divider > [class*='wpbf-9-']:nth-child(n+2) {
+	border-left: 1px solid $base-color;
+}
+
+/* Grid cells */
+.wpbf-grid > * {
+	float: left;
+}
+
+.wpbf-grid-1-1 > * {
+	width: 100%;
+}
+.wpbf-grid-1-2 > * {
+	width: 50%;
+}
+.wpbf-grid-1-3 > * {
+	width: 33.333%;
+}
+.wpbf-grid-1-4 > * {
+	width: 25% !important;
+}
+.wpbf-grid-1-5 > * {
+	width: 20%;
+}
+.wpbf-grid-1-6 > * {
+	width: 16.666%;
+}
+.wpbf-grid-1-10 > * {
+	width: 10%;
+}
+
+// Whole
+.wpbf-1-1 {
+	width: 100%;
+}
+
+// Halves
+.wpbf-1-2,
+.wpbf-2-4,
+.wpbf-3-6,
+.wpbf-5-10 {
+	width: 50%;
+}
+
+// Thirds
+.wpbf-1-3,
+.wpbf-2-6 {
+	width: 33.333%;
+}
+.wpbf-2-3,
+.wpbf-4-6 {
+	width: 66.666%;
+}
+
+// Quarters
+.wpbf-1-4 {
+	width: 25%;
+}
+.wpbf-3-4 {
+	width: 75%;
+}
+
+// Fifths
+.wpbf-1-5,
+.wpbf-2-10 {
+	width: 20%;
+}
+.wpbf-2-5,
+.wpbf-4-10 {
+	width: 40%;
+}
+.wpbf-3-5,
+.wpbf-6-10 {
+	width: 60%;
+}
+.wpbf-4-5,
+.wpbf-8-10 {
+	width: 80%;
+}
+
+// Sixths
+.wpbf-1-6 {
+	width: 16.666%;
+}
+.wpbf-5-6 {
+	width: 83.333%;
+}
+
+// Tenths
+.wpbf-1-10 {
+	width: 10%;
+}
+.wpbf-3-10 {
+	width: 30%;
+}
+.wpbf-7-10 {
+	width: 70%;
+}
+.wpbf-9-10 {
+	width: 90%;
+}
+
+// Grid clearfix
+.wpbf-grid:before,
+.wpbf-grid:after {
+	content: "";
+	display: block;
+	overflow: hidden;
+}
+.wpbf-grid:after {
+	clear: both;
+}
+
+/* Text modifier */
+.wpbf-text-left {
+	text-align: left;
+}
+.wpbf-text-right {
+	text-align: right;
+}
+.wpbf-text-center {
+	text-align: center;
+}
+.wpbf-text-justify {
+	text-align: justify;
+}
+
+.wpbf-uppercase,
+.wpbf-text-uppercase {
+	text-transform: uppercase;
+}
+
+.wpbf-inline-block {
+	display: inline-block;
+}
+
+/* Utility */
+
+// Image
+.wpbf-image,
+.wpbf-img {
+	width: 100%;
+	height: auto;
+}
+
+// Visibility
+.wpbf-hidden {
+	display: none;
+}
+
+/* Margins */
+
+// Xl
+.wpbf-margin-xlarge {
+	margin-top: $margin-xlarge;
+	margin-bottom: $margin-xlarge;
+}
+.wpbf-margin-xlarge-top {
+	margin-top: $margin-xlarge;
+}
+.wpbf-margin-xlarge-bottom {
+	margin-bottom: $margin-xlarge;
+}
+.wpbf-margin-xlarge-left {
+	margin-left: $margin-xlarge;
+}
+.wpbf-margin-xlarge-right {
+	margin-right: $margin-xlarge;
+}
+
+// Large
+.wpbf-margin-large {
+	margin-top: $margin-large;
+	margin-bottom: $margin-large;
+}
+.wpbf-margin-large-top {
+	margin-top: $margin-large;
+}
+.wpbf-margin-large-bottom {
+	margin-bottom: $margin-large;
+}
+.wpbf-margin-large-left {
+	margin-left: $margin-large;
+}
+.wpbf-margin-large-right {
+	margin-right: $margin-large;
+}
+
+// Medium
+.wpbf-margin-medium {
+	margin-top: $margin-medium;
+	margin-bottom: $margin-medium;
+}
+.wpbf-margin-medium-top {
+	margin-top: $margin-medium;
+}
+.wpbf-margin-medium-bottom {
+	margin-bottom: $margin-medium;
+}
+.wpbf-margin-medium-left {
+	margin-left: $margin-medium;
+}
+.wpbf-margin-medium-right {
+	margin-right: $margin-medium;
+}
+
+// Regular
+.wpbf-margin {
+	margin-top: $margin;
+	margin-bottom: $margin;
+}
+.wpbf-margin-top {
+	margin-top: $margin;
+}
+.wpbf-margin-bottom {
+	margin-bottom: $margin;
+}
+.wpbf-margin-left {
+	margin-left: $margin;
+}
+.wpbf-margin-right {
+	margin-right: $margin;
+}
+
+// Small
+.wpbf-margin-small {
+	margin-top: $margin-small;
+	margin-bottom: $margin-small;
+}
+.wpbf-margin-small-top {
+	margin-top: $margin-small;
+}
+.wpbf-margin-small-bottom {
+	margin-bottom: $margin-small;
+}
+.wpbf-margin-small-left {
+	margin-left: $margin-small;
+}
+.wpbf-margin-small-right {
+	margin-right: $margin-small;
+}
+
+/* Paddings */
+
+// Xl
+.wpbf-padding-xlarge {
+	padding-top: $padding-xlarge;
+	padding-bottom: $padding-xlarge;
+}
+.wpbf-padding-xlarge-top {
+	padding-top: $padding-xlarge;
+}
+.wpbf-padding-xlarge-bottom {
+	padding-bottom: $padding-xlarge;
+}
+.wpbf-padding-xlarge-left {
+	padding-left: $padding-xlarge;
+}
+.wpbf-padding-xlarge-right {
+	padding-right: $padding-xlarge;
+}
+
+// Large
+.wpbf-padding-large {
+	padding-top: $padding-large;
+	padding-bottom: $padding-large;
+}
+.wpbf-padding-large-top {
+	padding-top: $padding-large;
+}
+.wpbf-padding-large-bottom {
+	padding-bottom: $padding-large;
+}
+.wpbf-padding-large-left {
+	padding-left: $padding-large;
+}
+.wpbf-padding-large-right {
+	padding-right: $padding-large;
+}
+
+// Medium
+.wpbf-padding-medium {
+	padding-top: $padding-medium;
+	padding-bottom: $padding-medium;
+}
+.wpbf-padding-medium-top {
+	padding-top: $padding-medium;
+}
+.wpbf-padding-medium-bottom {
+	padding-bottom: $padding-medium;
+}
+.wpbf-padding-medium-left {
+	padding-left: $padding-medium;
+}
+.wpbf-padding-medium-right {
+	padding-right: $padding-medium;
+}
+
+// Regular
+.wpbf-padding {
+	padding-top: $padding;
+	padding-bottom: $padding;
+}
+.wpbf-padding-top {
+	padding-top: $padding;
+}
+.wpbf-padding-bottom {
+	padding-bottom: $padding;
+}
+.wpbf-padding-left {
+	padding-left: $padding;
+}
+.wpbf-padding-right {
+	padding-right: $padding;
+}
+
+// Small
+.wpbf-padding-small {
+	padding-top: $padding-small;
+	padding-bottom: $padding-small;
+}
+.wpbf-padding-small-top {
+	padding-top: $padding-small;
+}
+.wpbf-padding-small-bottom {
+	padding-bottom: $padding-small;
+}
+.wpbf-padding-small-left {
+	padding-left: $padding-small;
+}
+.wpbf-padding-small-right {
+	padding-right: $padding-small;
+}

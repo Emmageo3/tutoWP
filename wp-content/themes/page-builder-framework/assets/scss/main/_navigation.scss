@@ -1,0 +1,521 @@
+/* Navigation */
+.wpbf-navigation {
+	width: 100%;
+	background: $base-color-alt;
+	position: relative;
+	z-index: 555;
+}
+
+.wpbf-nav-wrapper {
+	padding-top: $padding;
+	padding-bottom: $padding;
+	position: relative;
+}
+
+.wpbf-navigation {	
+	.wpbf-grid-collapse {
+		display: table;
+		width: 100%;
+	}
+	.wpbf-logo-container,
+	.wpbf-menu-container {
+		display: table-cell;
+		float: none;
+		vertical-align: middle;
+	}
+}
+
+.wpbf-menu {
+	margin: 0;
+	padding: 0;
+	li {
+		list-style: none;
+	}
+	a {
+		display: block;
+	}
+}
+
+// Clearfix
+.wpbf-menu:before,
+.wpbf-menu:after {
+	content: "";
+	display: table;
+}
+
+.wpbf-menu:after {
+	clear: both;
+}
+
+/* Logo */
+.wpbf-logo-container {
+	line-height: 1.5;
+}
+
+.wpbf-logo {
+	a {
+		font-weight: 700;
+		font-size: 22px;
+	}
+}
+
+.wpbf-tagline {
+	font-weight: 700;
+	margin: 0;
+}
+
+/* Search menu item */
+.wpbf-menu-item-search {
+	position: relative;
+	&.active i {
+		opacity: 0;
+	}
+	.wpbf-menu-search {
+		position: absolute;
+		z-index: 3;
+		top: 50%;
+		margin-top: -25px;
+		right: 0;
+		display: none;
+		opacity: 0;
+		width: 0;
+		max-width: 350px;
+		input[type=search] {
+			height: 50px;
+		}
+	}
+}
+
+/* Menu */
+
+// Animation
+.wpbf-mobile-menu a, .wpbf-menu a {
+	@include transition(all 0.2s);
+}
+
+.wpbf-menu li {
+	@include transition(background-color 0.2s);
+}
+
+// Current menu item
+.wpbf-menu > .current-menu-item > a {
+	color: $accent-color-alt !important;
+}
+
+/* Sub menu */
+
+// List reset
+.wpbf-menu .sub-menu {
+	margin: 0;
+	padding: 0;
+}
+
+// All sub menus
+.wpbf-sub-menu {
+	// First level sub menu container
+	> .menu-item-has-children {
+		// First level sub menu
+		> .sub-menu {
+			display: none;
+			position: absolute;
+			z-index: 111;
+			background: #fff;
+			@include box-shadow(0px 0px 10px 0px rgba(#000,.15));
+		}
+	}
+}
+
+// Default sub menus (excluding mega menu)
+.wpbf-sub-menu {
+	// All sub menus
+	> .menu-item-has-children:not(.wpbf-mega-menu) .sub-menu {
+		width: 220px;
+	}
+	// First level sub menu container
+	> .menu-item-has-children:not(.wpbf-mega-menu) {
+		position: relative;
+	}
+	// Second level sub menu container
+	> .menu-item-has-children:not(.wpbf-mega-menu) .menu-item-has-children {
+		position: relative;
+		> .sub-menu {
+			display: none;
+			opacity: 0;
+			left: 100%;
+			top: 0;
+			position: absolute;
+			z-index: 111;
+			background: #fff;
+			@include box-shadow(0px 0px 10px 0px rgba(#000,.15));
+		}
+	}
+}
+
+// Sub menu indicators (SVG's)
+.wpbf-sub-menu {
+	// First level sub menu container
+	> .menu-item-has-children {
+		// Icons
+		> a .wpbf-icon svg,
+		> a .wpbff {
+			display: inline-block;
+		}
+	}
+	// Second level sub menu container
+	> .menu-item-has-children .menu-item-has-children {
+		// Icons
+		> a .wpbf-icon svg,
+		> a .wpbff {
+			transform: rotate(-90deg);
+			float: right;
+			top: .3em;
+			position: relative;
+		}
+	}
+}
+
+// Sub menu modifier (alignment)
+.wpbf-sub-menu-align-right > .menu-item-has-children:not(.wpbf-mega-menu) .sub-menu {
+	right: 0;
+}
+.wpbf-sub-menu-align-right > .menu-item-has-children:not(.wpbf-mega-menu) .menu-item-has-children {
+	> a:after {
+		display: none;
+	}
+}
+.wpbf-sub-menu-align-right > .menu-item-has-children:not(.wpbf-mega-menu) .menu-item-has-children .sub-menu {
+	left: -100%;
+}
+
+.wpbf-sub-menu-align-center > .menu-item-has-children:not(.wpbf-mega-menu) > .sub-menu {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.wpbf-sub-menu-focus > .sub-menu {
+	display: block !important;
+	opacity: 1 !important;
+}
+
+/* Navigation variations */
+
+// Defaults
+.wpbf-menu-right,
+.wpbf-menu-left,
+.wpbf-menu-stacked,
+.wpbf-menu-stacked-advanced,
+.wpbf-menu-centered,
+.wpbf-pre-header,
+.wpbf-page-footer {
+	.wpbf-menu {
+		a {
+			padding: $padding-small $padding;
+		}
+		> .menu-item {
+			float: left;
+		}
+	}
+}
+
+// Right navigation
+.wpbf-menu-right {
+	.wpbf-menu {
+		float: right;
+	}
+}
+
+// Left navigation
+.wpbf-menu-left {
+	.wpbf-logo-container {
+		text-align: right;
+	}
+	.wpbf-menu {
+		float: left;
+	}
+}
+
+// Centered navigation
+.wpbf-menu-centered {
+	.logo-container {
+		display: none;
+		text-align: center;
+		padding:  0 $padding;
+		a {
+			padding: 0;
+		}
+	}
+	.wpbf-menu {
+		@include flex();
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+// Stacked navigation
+.wpbf-menu-stacked {
+	text-align: center;
+	.wpbf-menu {
+		display: inline-block;
+		text-align: left;
+	}
+}
+
+/* Mobile toggle */
+
+// Defaults
+.wpbf-mobile-logo a {
+	font-weight: 700;
+}
+
+.wpbf-menu-toggle-container {
+	text-align: right;
+}
+
+.wpbf-menu-left .wpbf-menu-toggle-container {
+	text-align: left;
+}
+
+// Toggle & nav menu items
+.wpbf-nav-item,
+.wpbf-mobile-nav-item {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0;
+	margin: 0 15px 0 0;
+	vertical-align: middle;
+	li {
+		list-style: none;
+	}
+	a {
+		color: inherit;
+	}
+}
+
+.wpbf-mobile-menu-toggle,
+.wpbf-menu-toggle {
+	margin: 0;
+}
+
+// SVG support (Hamburger)
+.wpbf-mobile-menu-hamburger {
+	.wpbf-mobile-menu-toggle {
+		.wpbf-icon:nth-of-type(odd) {
+			display: none;
+		}
+	}
+	.wpbf-mobile-menu-toggle.active {
+		.wpbf-icon:nth-of-type(odd) {
+			display: block;
+		}
+		.wpbf-icon:nth-of-type(even) {
+			display: none;
+		}
+	}
+}
+
+.wpbf-mobile-nav-wrapper {
+	padding-top: $padding;
+	padding-bottom: $padding;
+}
+
+// Hamburger & off-canvas toggle
+.wpbf-mobile-menu-hamburger,
+.wpbf-mobile-menu-off-canvas {
+	.wpbf-mobile-nav-wrapper {
+		@include flex();
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+	}
+}
+
+// Default toggle
+.wpbf-mobile-menu-default {
+	.wpbf-mobile-logo-container,
+	.wpbf-menu-toggle-container {
+		text-align: center;
+	}
+	.wpbf-menu-toggle-container {
+		margin-top: $margin;
+	}
+}
+
+/* Mobile menu */
+.wpbf-mobile-menu-container {
+	display: none;
+	background: #fff;
+}
+
+// Defaults
+.wpbf-mobile-menu {
+	margin: 0;
+	padding: 0;
+	li {
+		list-style: none;
+	}
+	z-index: 111;
+	a {
+		display: block;
+		padding: $padding-small $padding;
+	}
+	.menu-item {
+		border-top: 1px solid $base-color;
+	}
+	> .menu-item:last-child {
+		border-bottom: 1px solid $base-color;
+	}
+}
+
+.wpbf-mobile-menu-container {
+	nav {
+		overflow-y: auto;
+		height: 100%;
+	}
+}
+
+// Sub menu
+.wpbf-mobile-menu .sub-menu {
+	margin: 0;
+	padding: 0;
+	display: none;
+}
+
+.wpbf-mobile-menu .menu-item-has-children {
+	position: relative;
+	.wpbf-submenu-toggle {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		right: 0;
+		padding: $padding-small $padding;
+	}
+}
+
+// SVG support
+.wpbf-submenu-toggle {
+	.wpbf-icon:nth-of-type(odd) {
+		display: none;
+	}
+}
+
+.wpbf-submenu-toggle.active {
+	.wpbf-icon:nth-of-type(odd) {
+		display: block;
+	}
+	.wpbf-icon:nth-of-type(even) {
+		display: none;
+	}
+}
+
+/* Pre header */
+
+.wpbf-pre-header {
+	.wpbf-menu {
+		float: right;
+		.sub-menu {
+			z-index: 999;
+		}
+	}
+}
+
+ // Right navigation
+.wpbf-pre-header {
+	.wpbf-inner-pre-header-right {
+		.wpbf-menu {
+			float: right;
+			.sub-menu {
+				text-align: left;
+			}
+		}
+	}
+}
+
+// Left navigation
+.wpbf-pre-header {
+	.wpbf-inner-pre-header-left {
+		.wpbf-menu {
+			float: left;
+		}
+	}
+}
+
+/* Footer */
+
+// One column navigation
+.wpbf-page-footer {
+	.wpbf-inner-footer-content {
+ 		.wpbf-menu {
+	 		@include flex();
+	 		align-items: center;
+	 		justify-content: center;
+			flex-wrap: wrap;
+ 		}
+ 	}
+ }
+
+ // Right navigation
+.wpbf-page-footer {
+	.wpbf-inner-footer-right {
+		.wpbf-menu {
+			float: right;
+		}
+	}
+}
+
+// Left navigation
+.wpbf-page-footer {
+	.wpbf-inner-footer-left {
+		.wpbf-menu {
+			float: left;
+		}
+	}
+}
+
+/* Post navigation */
+.post-links {
+	margin-bottom: $margin;
+}
+
+.previous-post-link {
+}
+
+.next-post-link {
+	float: right;
+}
+
+/* Sticky navigation */
+.admin-bar .wpbf-navigation-active {
+	margin-top: 32px;
+}
+
+/* WooCommerce */
+
+// Cart menu item
+// This is here because even with the Woo styles disabled, this is present on every page.
+.wpbf-woo-menu-item {
+	.wpbf-woo-menu-item-count {
+		border-radius: 3px;
+		vertical-align: middle;
+		display: inline-block;
+		padding: 2px 7px;
+		margin-left: 7px;
+		text-align: center;
+		background: $accent-color;
+		color: #fff;
+		font-size: $tiny-fontsize;
+		position: relative;
+	}
+}
+
+// Product search widget
+.woocommerce-product-search {
+	position: relative;
+	.search-field {
+		padding-right: 40px;
+	}
+	button {
+		display: none;
+	}
+}

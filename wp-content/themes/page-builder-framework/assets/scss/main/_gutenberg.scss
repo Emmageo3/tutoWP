@@ -1,0 +1,227 @@
+// Font sizes
+.has-tiny-font-size {
+	font-size: $tiny-fontsize;
+}
+
+.has-small-font-size {
+	font-size: $small-fontsize;
+}
+
+.has-large-font-size {
+	font-size: $bigger-fontsize;
+}
+
+.has-larger-font-size {
+	font-size: 32px;
+}
+
+.has-extra-font-size {
+	font-size: 44px;
+}
+
+// Full aligned items
+.wpbf-no-sidebar .alignfull {
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	width: auto;
+	max-width: unset;
+}
+
+.alignwide, .alignfull {
+	iframe {
+		width: 100%;
+	}
+}
+
+// Separator
+.wp-block-separator {
+	max-width: 280px;
+	margin: $margin-medium auto;
+	border: none;
+	background: $base-color;
+	height: 2px;
+}
+
+// Separator modifier (wide)
+.wp-block-separator.is-style-wide {
+	width: 100%;
+	max-width: none;
+	height: 1px;
+}
+
+// Separator modifier (dots)
+.wp-block-separator.is-style-dots:before {
+	color: $base-color;
+	font-size: 30px;
+}
+
+// Blockquote
+.wp-block-quote.is-large,
+.wp-block-quote.is-style-large {
+	margin: $margin 0 $margin $margin;
+	padding: 0 0 0 $padding;
+}
+
+.wp-block-quote.has-text-align-right {
+	margin: $margin $margin $margin 0;
+	padding: 0 $padding 0 0;
+	border: none;
+	border-right: 5px solid $base-color;
+}
+
+.wp-block-quote.has-text-align-center {
+	padding: 0;
+	margin-left: 0;
+	border: none;
+}
+
+// Pullquote
+.wp-block-pullquote {
+	blockquote {
+		padding: 0 $padding;
+		margin: 0;
+		border-left: none;
+	}
+}
+
+.wp-block-pullquote {
+	margin: $margin-medium 0;
+	padding: $padding 0;
+	border-top: 5px solid $base-color;
+	border-bottom: 5px solid $base-color;
+}
+
+// Captions
+.wp-block-image figcaption,
+.wp-block-table figcaption {
+	margin-top: $margin-small;
+	margin-bottom: $margin;
+	text-align: center;
+	font-size: $small-fontsize;
+}
+
+.blocks-gallery-caption {
+	margin-top: 0;
+	margin-bottom: $margin;
+	text-align: center;
+	width: 100%;
+	font-size: $small-fontsize;
+}
+
+// Image
+.wp-block-image {
+	margin-bottom: $margin;
+}
+
+// Buttons
+.wp-block-button,
+.wp-block-buttons {
+	margin-bottom: $margin;
+}
+
+.wp-block-button__link {
+	background: $accent-color;
+	@include transition(all 0.2s);
+}
+
+.is-style-outline .wp-block-button__link:not(.has-text-color) {
+	border-color: $accent-color;
+	color: $accent-color;
+}
+
+// Media & text
+.wp-block-media-text {
+	margin-bottom: $margin;
+}
+
+// Cover
+.wp-block-cover {
+	margin-bottom: $margin;
+	padding: $padding;
+	// We need to set the inner container width because WordPress sets it to 100%.
+	// This is needed to keep the content of wide & full-width blocks contained.
+	.wp-block-cover__inner-container {
+		max-width: 1200px;
+	}
+}
+
+.wp-block-cover p:not(.has-text-color) {
+	color: #fff;
+}
+
+// Audio
+.wp-block-audio audio {
+	width: 100%;
+}
+
+// Group
+.wp-block-group {
+	// We need to set the inner container width because WordPress doesn't define a width at all.
+	// This is needed to keep the content of wide & full-width group blocks contained.
+	.wp-block-group__inner-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding-left: $padding;
+		padding-right: $padding;
+	}
+}
+
+// Let's apply some margin & padding if we have a background color.
+.wp-block-group.has-background {
+	.wp-block-group__inner-container {
+		margin-bottom: $margin;
+		padding-top: $padding;
+		padding-bottom: $padding;
+	}
+}
+
+// Sidebar
+.widget_block {
+	ol, ul {
+		padding: 0;
+	}
+	// Remove group block styles if we're in the sidebar.
+	.wp-block-group {
+		.wp-block-group__inner-container {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+
+// Latest Comments
+.wp-block-latest-comments__comment {
+	margin-bottom: 0;
+	line-height: 1.7; // I mean sure, why would WordPress not want to set this to 1.1.
+}
+
+ol.wp-block-latest-comments {
+	margin-bottom: 0;
+}
+
+// Searchform
+.wp-block-search {
+	.wp-block-search__input {
+		border: 1px solid $base-color;
+	}
+	.wp-block-search__button {
+		padding: 14px 16px;
+		background: $base-color;
+		color: $brand-color-alt;
+		border: none;
+		@include transition(all 0.2s);
+		line-height: 1;
+		font-weight: 700;
+		cursor: pointer;
+	}	
+}
+
+// Searchform (Button inside)
+.wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+	background: #fff;
+	border: 1px solid $base-color;
+}
+
+.wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__button {
+	padding: 14px 16px;
+}

@@ -1,0 +1,134 @@
+/* Accessibility */
+:focus {
+	outline: 1px dotted rgba(#000,.6);
+}
+
+body:focus {
+	outline: none;
+}
+
+.using-mouse :focus {
+	outline: none;
+}
+
+.using-mouse::-moz-focus-inner {
+	border: 0;
+}
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: #fff;
+	clip: auto !important;
+	clip-path: none;
+	color: #000;
+	display: block;
+	font-size: $base-fontsize;
+	height: auto;
+	left: 10px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 10px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+/* Reset */
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+p,
+figure {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	line-height: $base-lineheight;
+	border: none;
+	background: transparent;
+	color: inherit;
+}
+
+/* Defaults */
+pre {
+	background: $base-color-alt;
+	padding: $padding;
+	margin-bottom: $margin;
+	line-height: $base-lineheight;
+	overflow: auto;
+}
+
+code {
+	background: $base-color-alt;
+	padding: 2px;
+}
+
+p {
+	margin-bottom: $margin;
+}
+
+figure {
+	margin-bottom: $margin;
+}
+
+ul,
+ol {
+	margin: 0 0 $margin 0;
+	ul, ol {
+		margin: 5px 0;
+	}
+	ul li {
+		list-style: disc;
+	}
+}
+
+.opacity {
+	opacity: 0;
+}
+
+img {
+	vertical-align: middle;
+	max-width: 100%;
+	height: auto;
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	color: $accent-color;
+	@include transition(color 0.2s);
+}
+
+a:hover {
+	color: $accent-color-alt;
+}
+
+textarea {
+	vertical-align: top;
+	resize: vertical;
+}

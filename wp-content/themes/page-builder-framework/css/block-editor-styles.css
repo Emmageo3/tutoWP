@@ -1,0 +1,152 @@
+:root {
+	--base-color: #dedee5;
+	--base-color-alt: #f5f5f7;
+	--brand-color: #3e4349;
+	--brand-color-alt: #6d7680;
+	--accent-color: #3ba9d2;
+	--accent-color-alt: #79c4e0;
+}
+
+/* Set default margins */
+.editor-styles-wrapper [data-block] {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+/* Set default block width */
+.wp-block {
+	max-width: 1000px;
+}
+
+/* Set wide aligned image width */
+.wp-block[data-align="wide"] {
+	max-width: 1400px;
+}
+
+/*
+ * We're working with the #wpwrap prefix below to override Gutenbergs inline styles.
+ * This is so much harder than it should be. There's no consistency here. Thanks Gutenberg.
+ */
+
+/* Reset font color */
+#wpwrap .editor-styles-wrapper {
+	color: var(--brand-color-alt);
+}
+
+/* Reset headline styles */
+#wpwrap .editor-post-title__block .editor-post-title__input,
+#wpwrap .editor-styles-wrapper h1,
+#wpwrap .editor-styles-wrapper h2,
+#wpwrap .editor-styles-wrapper h3,
+#wpwrap .editor-styles-wrapper h4,
+#wpwrap .editor-styles-wrapper h5,
+#wpwrap .editor-styles-wrapper h6 {
+	color: var(--brand-color);
+	font-weight: 700;
+}
+
+/* Links */
+.editor-styles-wrapper a {
+	text-decoration: none;
+	color: var(--accent-color);
+}
+
+.editor-styles-wrapper a:hover {
+	color: var(--accent-color-alt);
+}
+
+/* Blockquotes */
+.wp-block-quote, .wp-block-quote.is-style-large {
+	padding: 0 20px;
+	border-left: 5px solid var(--base-color);
+	font-style: italic;
+}
+
+.wp-block-quote.has-text-align-right {
+	margin: 0 20px;
+	padding: 0 20px;
+	border-right: 5px solid var(--base-color);
+}
+
+/* Blockquote citations */
+.wp-block-quote__citation, .wp-block-quote cite, .wp-block-quote footer,
+.wp-block-pullquote__citation, .wp-block-pullquote cite, .wp-block-pullquote footer {
+	font-style: italic;
+	opacity: .75;
+	text-transform: none;
+	font-size: 14px;
+}
+
+.wp-block-quote.is-style-large .wp-block-quote__citation {
+	font-size: 18px;
+}
+
+/* Pullquotes */
+.wp-block-pullquote {
+	border-top-color: var(--base-color);
+	border-bottom-color: var(--base-color);
+	border-top-width: 5px;
+	border-bottom-width: 5px;
+	padding: 20px 0;
+	font-style: italic;
+}
+
+/* Preformatted & code */
+
+/* Code block */
+.wp-block-code {
+	font-family: monospace, monospace;
+	background: var(--base-color-alt);
+	padding: 20px;
+
+	border: none;
+	border-radius: 0;
+	color: inherit;
+}
+
+/* Inline code */
+#wpwrap .editor-styles-wrapper code,
+#wpwrap .editor-styles-wrapper kbd {
+	background: var(--base-color-alt);
+}
+
+/* Pre block */
+.wp-block-preformatted {
+	font-family: monospace, monospace;
+	background: var(--base-color-alt);
+	padding: 20px;
+}
+
+/* Separator */
+.wp-block-separator {
+	border-bottom: 2px solid #d0d0da;
+}
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+	max-width: 280px;
+}
+
+.wp-block-separator.is-style-dots:before {
+	color: #b4b4c3;
+	font-size: 30px;
+}
+
+/* Table */
+.wp-block-table td,
+.wp-block-table th {
+	border: 1px solid var(--base-color);
+}
+
+/* Buttons */
+.wp-block-button__link {
+	background: var(--accent-color);
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.is-style-outline .wp-block-button__link:not(.has-text-color) {
+	border-color: var(--accent-color);
+	color: var(--accent-color);
+}
